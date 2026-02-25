@@ -36,22 +36,22 @@ Framework = **rules + folders + reusable code + test execution setup**
 
 ---
 
-## What is usually included in a Framework? (Selenium Example)
+## What is usually included in a Framework? 
 - **Test Cases**: actual scripts to validate features
 - **POM (Page Object Model)**: page classes with locators and actions
 - **Utilities/Helpers**: wait methods, screenshots, config reader, common actions
 - **Test Runner**: TestNG/JUnit for running suites
 - **Reports**: Extent/Allure for results
-- **Test Data**: Excel/JSON (no secrets)
+- **Test Data**: Excel/JSON 
 
 ---
 
 ## Example Project Structure
 - `src/main/java`  → Page classes + Utilities
 - `src/test/java`  → Test cases
-- `testdata/`      → Test data (no usernames/passwords)
+- `testdata/`      → Test data 
 - `pom.xml`        → Maven dependencies
-- `README.md`      → Notes and instructions
+  
 
 ---
 
