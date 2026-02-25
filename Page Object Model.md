@@ -79,7 +79,7 @@ public class LoginPage {
 		
 		@FindBy(xpath = "//button[text()='Sign In']")
 		private WebElement signinbt;
-##//Generate Getters method directly by one click -**Go to Sources-Select Generate Getters and Setters**
+//Generate Getters method directly by one click -Go to Sources-Select Generate Getters and Setters
 		public WebElement getUsernametf() {
 			return usernametf;
 		}
