@@ -77,14 +77,9 @@ This gives:
 
 ---
 
-## 8) POM Key Points (as in your slide)
-- POM is a design pattern to create an **Object Repository** for UI elements
-- **One Page Class for each Web Page**
-- Page class **finds WebElements**
-- Page class contains **methods** to perform actions on those WebElements
 
 
-## 9) Example POM Class (Template)
+## 8) Example POM Class (Template)
 > Replace locators based on your application.
 
 
