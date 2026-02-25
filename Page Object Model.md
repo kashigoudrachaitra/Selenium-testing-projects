@@ -49,9 +49,44 @@ Inside that class:
 > Best practice is: use **waits**, avoid storing old element references, and re-locate when needed.
 
 ---
+## 6) How the Framework uses POM (Step-by-step flow)
+1. **Test starts** (TestNG/JUnit)
+2. Framework **opens browser** using Base class / Driver setup
+3. Test creates the **Page Object**
+   - Example: `LoginPage lp = new LoginPage(driver);`
+4. Page Object uses **PageFactory** to initialize `@FindBy` elements
+5. Test calls **Page methods** (actions), not direct locators
+   - Example: `lp.enterUsername(value); lp.clickLogin();`
+6. Framework validates results (assertions), takes screenshots (if needed), and creates report
+7. Browser closes (teardown)
 
-## 6) Example POM Class (Template)
+---
+
+## 7) Why POM is used inside the Framework
+Without POM, tests will contain many lines like:
+- `driver.findElement(...).sendKeys(...)`
+
+With POM, locators stay in Page class, and tests stay clean:
+- Test uses only **methods**, not locators
+
+This gives:
+- same coding style for team
+- easy maintenance
+- less duplicate code
+- faster updates when UI changes
+
+---
+
+## 8) POM Key Points (as in your slide)
+- POM is a design pattern to create an **Object Repository** for UI elements
+- **One Page Class for each Web Page**
+- Page class **finds WebElements**
+- Page class contains **methods** to perform actions on those WebElements
+
+
+## 9) Example POM Class (Template)
 > Replace locators based on your application.
+
 
 ```java
 
