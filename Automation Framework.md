@@ -1,29 +1,60 @@
 # Automation Framework 
 
-## What is a Framework?
-A **framework** is a **fixed structure + rules** for writing automation tests.
-It helps a team write code in the same way and run tests easily.
+# Automation Framework Notes (Simple & Clear)
 
-## Why do we need a Framework?
-- It defines the **company/team way of doing work**
-- It gives **common coding standards**
-- All team members follow the **same rules**
-- Less confusion and less difference in coding style
-- Faster and more accurate automation execution
+## What is an Automation Framework?
+An **automation framework** is a **pre-planned project setup** used to create and run automation tests in an organized way.  
+It gives a **standard structure**, so the same automation work can be done by different people without confusion.
 
-## Key Points 
-1. **Defines company/team way of doing things**
-   - Same folder structure, same naming, same process.
+In short:  
+Framework = **rules + folders + reusable code + test execution setup**
 
-2. **Common and structured standards of coding**
-   - Clean and reusable code.
+---
 
-3. **Every member should follow same standards**
-   - Easy to understand each other's code.
+## Why do we use an Automation Framework?
+- To follow one **fixed process** for automation in a team
+- To keep coding **clean and consistent**
+- To reduce repeated coding by using **reusable methods**
+- To make tests **easy to maintain** when the application changes
+- To improve **test execution speed** and reduce human mistakes
 
-4. **Less differences in coding type and standard**
-   - Fewer mistakes, easy maintenance.
+---
 
-5. **Increase speed and accuracy of automation process**
-   - Reusable methods reduce time and improve results.
+## Key Features / Main Points
+1. **Standard way of working**
+   - The team follows the same pattern (naming, folders, design).
+
+2. **Common coding style**
+   - Same method design, same format, same readable approach.
+
+3. **Team-friendly**
+   - Anyone in the team can understand and update the automation code easily.
+
+4. **Less mismatch in code**
+   - Fewer different styles, fewer errors, better collaboration.
+
+5. **Better automation performance**
+   - Reusable functions and proper structure improve speed and accuracy.
+
+---
+
+## What is usually included in a Framework? (Selenium Example)
+- **Test Cases**: actual scripts to validate features
+- **POM (Page Object Model)**: page classes with locators and actions
+- **Utilities/Helpers**: wait methods, screenshots, config reader, common actions
+- **Test Runner**: TestNG/JUnit for running suites
+- **Reports**: Extent/Allure for results
+- **Test Data**: Excel/JSON (no secrets)
+
+---
+
+## Example Project Structure
+- `src/main/java`  → Page classes + Utilities
+- `src/test/java`  → Test cases
+- `testdata/`      → Test data (no usernames/passwords)
+- `pom.xml`        → Maven dependencies
+- `README.md`      → Notes and instructions
+
+---
+
 
