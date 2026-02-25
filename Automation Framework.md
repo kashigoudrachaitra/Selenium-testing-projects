@@ -1,7 +1,5 @@
 # Automation Framework 
 
-# Automation Framework Notes (Simple & Clear)
-
 ## What is an Automation Framework?
 An **automation framework** is a **pre-planned project setup** used to create and run automation tests in an organized way.  
 It gives a **standard structure**, so the same automation work can be done by different people without confusion.
