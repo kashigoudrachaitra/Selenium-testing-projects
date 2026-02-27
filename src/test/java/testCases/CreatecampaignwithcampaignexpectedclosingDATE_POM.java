@@ -1,0 +1,79 @@
+package testCases;
+
+import java.io.IOException;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+import genericUtilities.ExcelUtility;
+import genericUtilities.JavaUtility;
+import genericUtilities.PropertiesFileUtility;
+import genericUtilities.WebdriverUtility;
+import objectRepository.CampaignPage;
+import objectRepository.HomePage;
+import objectRepository.LoginPage;
+
+public class CreatecampaignwithcampaignexpectedclosingDATE_POM {
+
+	public static void main(String[] args) throws IOException {
+		PropertiesFileUtility putil = new PropertiesFileUtility();
+		ExcelUtility eutil = new ExcelUtility();
+		JavaUtility jutil = new JavaUtility();
+		WebdriverUtility wutil = new WebdriverUtility();
+		String BROWSER = putil.togetDataFromPropertiesFile("Browser");
+		String URL = putil.togetDataFromPropertiesFile("Url");
+		String USERNAME = putil.togetDataFromPropertiesFile("Username");
+		String PASSWORD = putil.togetDataFromPropertiesFile("Password");
+		String campname = eutil.toreadDatafromExcelFile("Sheet1", 1, 2);
+		String target = eutil.toreadDatafromExcelFile("Sheet1", 1, 3);
+		WebDriver driver = null;
+		if (BROWSER.equals("Edge")) {
+		driver = new EdgeDriver();
+		} else if (BROWSER.equals("Chrome")) {
+		driver = new ChromeDriver();
+		} else if (BROWSER.equals("Firefox")) {
+		driver = new FirefoxDriver();
+		}
+		driver.manage().window().maximize();
+		wutil.waitForPageToLoad(driver);
+		driver.get(URL);
+		LoginPage lp=new LoginPage(driver);
+		lp.getUsernametf().sendKeys(USERNAME);
+		lp.getInputpasswordtf().sendKeys(PASSWORD);
+		lp.getSigninbt().click();
+		String daterequired = jutil.togetRequiredDate(30);
+		HomePage hp=new HomePage(driver);
+		hp.getCreatecampbt().click();
+		CampaignPage cp=new CampaignPage(driver);
+		cp.getCampnname().sendKeys("hplaptop");
+		WebElement size = cp.getTargetsize();
+		size.clear();
+		size.sendKeys(target);
+		WebElement expClosedate =cp.getExpectedclosedate();
+		wutil.passInput(driver, expClosedate, daterequired);
+		cp.getCreatecampaignbutton().click();
+		// validation
+		WebElement toastmsg =cp.getToastmsg();
+		wutil.waitForVisibilityOfElement(driver, toastmsg);
+		String msg = toastmsg.getText();
+		if (msg.contains(campname)) {
+		System.out.println("campaign created");
+		}
+		else {
+		System.out.println("campaign not created");
+		}
+		cp.getClosetoastmsg().click();
+		// logout
+		WebElement icon = hp.getUsericon();
+		wutil.mouseHoverOnWebElement(driver, icon);
+		WebElement logout = hp.getLogout();
+		wutil.clickOnWebElement(driver, logout);
+		// close browser
+		driver.quit();
+	}
+
+}
